@@ -9,7 +9,7 @@ namespace VisitorPattern
 {
     public class ListVisitor :Visitor
     {
-        private String currentdir = "";
+        private string currentdir = "";
 
         public override void Visit(File file)
         {
@@ -19,7 +19,7 @@ namespace VisitorPattern
         public override void Visit (Directory directory)
         {
             Console.WriteLine(currentdir + "/" + directory);
-            String savedir = currentdir;
+            string savedir = currentdir;
             currentdir = currentdir + "/" + directory.GetName();
             IEnumerator it = directory.GetEnumerator();
 
