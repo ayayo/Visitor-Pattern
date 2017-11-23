@@ -13,12 +13,12 @@ namespace VisitorPattern
 
         public override void Visit(File file)
         {
-            Console.WriteLine(currentdir + "/" + file);
+            Console.WriteLine(currentdir + "/" + ToString(file));
         }
 
         public override void Visit (Directory directory)
         {
-            Console.WriteLine(currentdir + "/" + directory);
+			Console.WriteLine(currentdir + "/" + ToString(directory));
             string savedir = currentdir;
             currentdir = currentdir + "/" + directory.Name;
             IEnumerator it = directory.GetEnumerator();
@@ -30,5 +30,12 @@ namespace VisitorPattern
             }
             currentdir = savedir;
         }
-    }
+
+		public static string ToString(Entry entry)
+		{
+			return entry.Name + " (" + entry.GetSize() + ")";
+		}
+
+
+	}
 }

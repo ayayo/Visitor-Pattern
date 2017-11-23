@@ -27,11 +27,6 @@ namespace VisitorPattern
             throw new FileTreatmentException();
         }
 
-        public override string ToString()
-        {
-            return Name + " (" + GetSize() + ")";
-        }
-
         public abstract void Accept(Visitor v);
     }
 }
