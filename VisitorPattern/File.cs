@@ -18,10 +18,7 @@ namespace VisitorPattern
             Size = size;
         }
 
-        public int GetSize()
-        {
-            return Size;
-        }
+		public int GetSize() => Size;
 
         public void Accept(IVisitor visitor)
         {
