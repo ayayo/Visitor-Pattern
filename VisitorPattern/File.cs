@@ -6,20 +6,24 @@ using System.Threading.Tasks;
 
 namespace VisitorPattern
 {
-    public class File :Entry
+    public class File : IFile
     {
-        private int size;
-        public File(string name,int size) : base(name)
+        private int Size { get; }
+
+		public string Name { get; }
+
+		public File(string name,int size)
         {
-            this.size = size;
+			Name = name;
+            Size = size;
         }
 
-        public override int GetSize()
+        public int GetSize()
         {
-            return size;
+            return Size;
         }
 
-        public override void Accept(Visitor v)
+        public void Accept(IVisitor v)
         {
             v.Visit(this);
         }

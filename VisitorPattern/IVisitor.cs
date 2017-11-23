@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace VisitorPattern
 {
-    public abstract class Visitor
+    public interface IVisitor
     {
-        public abstract void Visit(File file);
-        public abstract void Visit(Directory directory);
+        void Visit(IFile file);
+        void Visit(IDirectory directory);
     }
 }

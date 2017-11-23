@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace VisitorPattern
 {
-    public class ListVisitor :Visitor
+    public class ListVisitor : IVisitor
     {
         private string currentdir = "";
 
-        public override void Visit(File file)
+        public void Visit(IFile file)
         {
             Console.WriteLine(currentdir + "/" + ToString(file));
         }
 
-        public override void Visit (Directory directory)
+        public void Visit (IDirectory directory)
         {
 			Console.WriteLine(currentdir + "/" + ToString(directory));
             string savedir = currentdir;
@@ -25,13 +25,13 @@ namespace VisitorPattern
 
             while (it.MoveNext())
             {
-                Entry entry = (Entry)it.Current;
+                IEntry entry = (IEntry)it.Current;
                 entry.Accept(this);
             }
             currentdir = savedir;
         }
 
-		public static string ToString(Entry entry)
+		public static string ToString(IEntry entry)
 		{
 			return entry.Name + " (" + entry.GetSize() + ")";
 		}

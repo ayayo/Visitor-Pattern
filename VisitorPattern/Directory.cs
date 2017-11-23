@@ -7,27 +7,30 @@ using System.Threading.Tasks;
 
 namespace VisitorPattern
 {
-    public class Directory:Entry
+    public class Directory: IDirectory
     {
         private ArrayList dir = new ArrayList();
-    
-        public Directory(string name) : base(name)
+
+		public string Name { get; }
+
+		public Directory(string name)
         {
+			Name = name;
         }
 
-        public override int GetSize()
+        public int GetSize()
         {
             int size = 0;
             IEnumerator it = dir.GetEnumerator();
             while (it.MoveNext())
             {
-                Entry entry = (Entry)it.Current;
+                IEntry entry = (IEntry)it.Current;
                 size += entry.GetSize();
             }
             return size;
         }
 
-         public Entry Add(Entry entry)
+        public IEntry Add(IEntry entry)
         {
             dir.Add(entry);
             return this;
@@ -38,7 +41,7 @@ namespace VisitorPattern
             return dir.GetEnumerator();
         }
 
-        public override void Accept(Visitor v)
+        public void Accept(IVisitor v)
         {
             v.Visit(this);
         }
