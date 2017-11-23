@@ -5,7 +5,7 @@ namespace VisitorPattern
 {
     public class Directory: IDirectory
     {
-        private List<IEntry> childEntries = new List<IEntry>();
+        private readonly List<IEntry> childEntries = new List<IEntry>();
 
 		public string Name { get; }
 
