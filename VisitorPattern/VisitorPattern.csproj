@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Directory.cs" />
-    <Compile Include="Element.cs" />
     <Compile Include="Entry.cs" />
     <Compile Include="File.cs" />
     <Compile Include="FileTreatmentException.cs" />

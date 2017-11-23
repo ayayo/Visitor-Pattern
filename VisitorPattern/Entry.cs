@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VisitorPattern
 {
-    public abstract class Entry : Element
+    public abstract class Entry
     {
         public abstract string GetName();
         public abstract int GetSize();
