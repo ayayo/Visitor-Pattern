@@ -21,14 +21,12 @@ namespace VisitorPattern
 			Console.WriteLine(currentdir + "/" + ToString(directory));
             string savedir = currentdir;
             currentdir = currentdir + "/" + directory.Name;
-            IEnumerator it = directory.GetEnumerator();
+			foreach (var entry in directory.ChildEntries)
+			{
+				entry.Accept(this);
+			}
 
-            while (it.MoveNext())
-            {
-                IEntry entry = (IEntry)it.Current;
-                entry.Accept(this);
-            }
-            currentdir = savedir;
+			currentdir = savedir;
         }
 
 		public static string ToString(IEntry entry)

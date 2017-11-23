@@ -13,6 +13,8 @@ namespace VisitorPattern
 
 		public string Name { get; }
 
+		public IReadOnlyList<IEntry> ChildEntries => childEntries;
+
 		public Directory(string name)
         {
 			Name = name;
@@ -32,11 +34,6 @@ namespace VisitorPattern
         public void Add(IEntry entry)
         {
             childEntries.Add(entry);
-        }
-
-        public IEnumerator GetEnumerator()
-        {
-            return childEntries.GetEnumerator();
         }
 
         public void Accept(IVisitor visitor)
