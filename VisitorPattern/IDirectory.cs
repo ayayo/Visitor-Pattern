@@ -4,7 +4,7 @@ namespace VisitorPattern
 {
 	public interface IDirectory : IEntry
 	{
-		IEntry Add(IEntry entry);
+		void Add(IEntry entry);
 
 		IEnumerator GetEnumerator();
 	}

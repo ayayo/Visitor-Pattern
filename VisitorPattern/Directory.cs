@@ -9,7 +9,7 @@ namespace VisitorPattern
 {
     public class Directory: IDirectory
     {
-        private ArrayList dir = new ArrayList();
+        private List<IEntry> childEntries = new List<IEntry>();
 
 		public string Name { get; }
 
@@ -21,24 +21,22 @@ namespace VisitorPattern
         public int GetSize()
         {
             int size = 0;
-            IEnumerator it = dir.GetEnumerator();
-            while (it.MoveNext())
-            {
-                IEntry entry = (IEntry)it.Current;
-                size += entry.GetSize();
-            }
-            return size;
+			foreach (var entry in childEntries)
+			{
+				size += entry.GetSize();
+			}
+
+			return size;
         }
 
-        public IEntry Add(IEntry entry)
+        public void Add(IEntry entry)
         {
-            dir.Add(entry);
-            return this;
+            childEntries.Add(entry);
         }
 
         public IEnumerator GetEnumerator()
         {
-            return dir.GetEnumerator();
+            return childEntries.GetEnumerator();
         }
 
         public void Accept(IVisitor v)
