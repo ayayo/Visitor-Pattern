@@ -17,16 +17,6 @@ namespace VisitorPattern
 			Name = name;
 		}
 
-		public Entry Add(Entry entry)
-        {
-            throw new FileTreatmentException();
-        }
-
-        public IEnumerator Enumerator()
-        {
-            throw new FileTreatmentException();
-        }
-
         public abstract void Accept(Visitor v);
     }
 }

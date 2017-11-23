@@ -27,7 +27,7 @@ namespace VisitorPattern
             return size;
         }
 
-         public new Entry Add(Entry entry)
+         public Entry Add(Entry entry)
         {
             dir.Add(entry);
             return this;
