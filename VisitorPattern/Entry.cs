@@ -9,9 +9,15 @@ namespace VisitorPattern
 {
     public abstract class Entry
     {
-        public abstract string GetName();
+        public string Name { get; }
         public abstract int GetSize();
-        public Entry Add(Entry entry)
+
+		public Entry(string name)
+		{
+			Name = name;
+		}
+
+		public Entry Add(Entry entry)
         {
             throw new FileTreatmentException();
         }
@@ -23,7 +29,7 @@ namespace VisitorPattern
 
         public override string ToString()
         {
-            return GetName() + " (" + GetSize() + ")";
+            return Name + " (" + GetSize() + ")";
         }
 
         public abstract void Accept(Visitor v);

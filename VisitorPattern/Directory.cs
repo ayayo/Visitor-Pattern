@@ -9,17 +9,10 @@ namespace VisitorPattern
 {
     public class Directory:Entry
     {
-        private string name;
         private ArrayList dir = new ArrayList();
     
-        public Directory(string name)
+        public Directory(string name) : base(name)
         {
-            this.name = name;
-        }
-
-        public override string GetName()
-        {
-            return name;
         }
 
         public override int GetSize()

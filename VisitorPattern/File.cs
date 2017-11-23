@@ -8,17 +8,10 @@ namespace VisitorPattern
 {
     public class File :Entry
     {
-        private string name;
         private int size;
-        public File(string name,int size)
+        public File(string name,int size) : base(name)
         {
-            this.name = name;
             this.size = size;
-        }
-
-        public override string GetName()
-        {
-            return name;
         }
 
         public override int GetSize()

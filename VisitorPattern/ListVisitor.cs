@@ -20,7 +20,7 @@ namespace VisitorPattern
         {
             Console.WriteLine(currentdir + "/" + directory);
             string savedir = currentdir;
-            currentdir = currentdir + "/" + directory.GetName();
+            currentdir = currentdir + "/" + directory.Name;
             IEnumerator it = directory.GetEnumerator();
 
             while (it.MoveNext())
