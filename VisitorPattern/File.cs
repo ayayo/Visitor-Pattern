@@ -23,9 +23,9 @@ namespace VisitorPattern
             return Size;
         }
 
-        public void Accept(IVisitor v)
+        public void Accept(IVisitor visitor)
         {
-            v.Visit(this);
+            visitor.Visit(this);
         }
     } 
 }
