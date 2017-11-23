@@ -4,24 +4,24 @@ namespace VisitorPattern
 {
     public class ListVisitor : IVisitor
     {
-        private string currentdir = "";
+        private string currentDir = "";
 
         public void Visit(IFile file)
         {
-            Console.WriteLine(currentdir + "/" + ToString(file));
+            Console.WriteLine(currentDir + "/" + ToString(file));
         }
 
         public void Visit (IDirectory directory)
         {
-			Console.WriteLine(currentdir + "/" + ToString(directory));
-            string savedir = currentdir;
-            currentdir = currentdir + "/" + directory.Name;
+			Console.WriteLine(currentDir + "/" + ToString(directory));
+            string savedir = currentDir;
+            currentDir = currentDir + "/" + directory.Name;
 			foreach (var entry in directory.ChildEntries)
 			{
 				entry.Accept(this);
 			}
 
-			currentdir = savedir;
+			currentDir = savedir;
         }
 
 		public static string ToString(IEntry entry)
