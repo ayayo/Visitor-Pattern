@@ -1,34 +1,34 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VisitorPattern
 {
-    public class ListVisitor :Visitor
+    public class ListVisitor : IVisitor
     {
-        private string currentdir = "";
+        private string currentDir = "";
 
-        public override void Visit(File file)
+        public void Visit(IFile file)
         {
-            Console.WriteLine(currentdir + "/" + file);
+            Console.WriteLine(currentDir + "/" + ToString(file));
         }
 
-        public override void Visit (Directory directory)
+        public void Visit (IDirectory directory)
         {
-            Console.WriteLine(currentdir + "/" + directory);
-            string savedir = currentdir;
-            currentdir = currentdir + "/" + directory.GetName();
-            IEnumerator it = directory.GetEnumerator();
+			Console.WriteLine(currentDir + "/" + ToString(directory));
+            string savedir = currentDir;
+            currentDir = currentDir + "/" + directory.Name;
+			foreach (var entry in directory.ChildEntries)
+			{
+				entry.Accept(this);
+			}
 
-            while (it.MoveNext())
-            {
-                Entry entry = (Entry)it.Current;
-                entry.Accept(this);
-            }
-            currentdir = savedir;
+			currentDir = savedir;
         }
-    }
+
+		public static string ToString(IEntry entry)
+		{
+			return entry.Name + " (" + entry.GetSize() + ")";
+		}
+
+
+	}
 }

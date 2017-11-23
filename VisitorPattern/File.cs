@@ -1,34 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace VisitorPattern
+﻿namespace VisitorPattern
 {
-    public class File :Entry
+    public class File : IFile
     {
-        private string name;
-        private int size;
-        public File(string name,int size)
+        private int Size { get; }
+
+		public string Name { get; }
+
+		public File(string name,int size)
         {
-            this.name = name;
-            this.size = size;
+			Name = name;
+            Size = size;
         }
 
-        public override string GetName()
-        {
-            return name;
-        }
+		public int GetSize() => Size;
 
-        public override int GetSize()
-        {
-            return size;
-        }
-
-        public override void Accept(Visitor v)
-        {
-            v.Visit(this);
-        }
-    } 
+		public void Accept(IVisitor visitor) => visitor.Visit(this);
+	}
 }

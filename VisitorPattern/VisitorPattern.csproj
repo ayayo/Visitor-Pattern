@@ -44,14 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Directory.cs" />
-    <Compile Include="Element.cs" />
-    <Compile Include="Entry.cs" />
+    <Compile Include="IDirectory.cs" />
+    <Compile Include="IEntry.cs" />
     <Compile Include="File.cs" />
-    <Compile Include="FileTreatmentException.cs" />
+    <Compile Include="IFile.cs" />
     <Compile Include="ListVisitor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Visitor.cs" />
+    <Compile Include="IVisitor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

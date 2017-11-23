@@ -1,53 +1,25 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VisitorPattern
 {
-    public class Directory:Entry
+    public class Directory: IDirectory
     {
-        private string name;
-        private ArrayList dir = new ArrayList();
-    
-        public Directory(string name)
+        private readonly List<IEntry> childEntries = new List<IEntry>();
+
+		public string Name { get; }
+
+		public IReadOnlyList<IEntry> ChildEntries => childEntries;
+
+		public Directory(string name)
         {
-            this.name = name;
+			Name = name;
         }
 
-        public override string GetName()
-        {
-            return name;
-        }
+		public int GetSize() => childEntries.Sum(entry => entry.GetSize());
 
-        public override int GetSize()
-        {
-            int size = 0;
-            IEnumerator it = dir.GetEnumerator();
-            while (it.MoveNext())
-            {
-                Entry entry = (Entry)it.Current;
-                size += entry.GetSize();
-            }
-            return size;
-        }
+        public void Add(IEntry entry) => childEntries.Add(entry);
 
-         public new Entry Add(Entry entry)
-        {
-            dir.Add(entry);
-            return this;
-        }
-
-        public IEnumerator GetEnumerator()
-        {
-            return dir.GetEnumerator();
-        }
-
-        public override void Accept(Visitor v)
-        {
-            v.Visit(this);
-        }
+		public void Accept(IVisitor visitor) => visitor.Visit(this);
     }
 }
