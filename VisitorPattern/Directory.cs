@@ -20,21 +20,9 @@ namespace VisitorPattern
 			Name = name;
         }
 
-        public int GetSize()
-        {
-            int size = 0;
-			foreach (var entry in childEntries)
-			{
-				size += entry.GetSize();
-			}
+		public int GetSize() => childEntries.Sum(entry => entry.GetSize());
 
-			return size;
-        }
-
-        public void Add(IEntry entry)
-        {
-            childEntries.Add(entry);
-        }
+        public void Add(IEntry entry) => childEntries.Add(entry);
 
         public void Accept(IVisitor visitor)
         {
