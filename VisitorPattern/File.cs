@@ -20,9 +20,6 @@ namespace VisitorPattern
 
 		public int GetSize() => Size;
 
-        public void Accept(IVisitor visitor)
-        {
-            visitor.Visit(this);
-        }
-    } 
+		public void Accept(IVisitor visitor) => visitor.Visit(this);
+	}
 }

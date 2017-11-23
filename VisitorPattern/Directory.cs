@@ -24,9 +24,6 @@ namespace VisitorPattern
 
         public void Add(IEntry entry) => childEntries.Add(entry);
 
-        public void Accept(IVisitor visitor)
-        {
-            visitor.Visit(this);
-        }
+		public void Accept(IVisitor visitor) => visitor.Visit(this);
     }
 }
