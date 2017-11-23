@@ -47,7 +47,6 @@
     <Compile Include="IDirectory.cs" />
     <Compile Include="IEntry.cs" />
     <Compile Include="File.cs" />
-    <Compile Include="FileTreatmentException.cs" />
     <Compile Include="IFile.cs" />
     <Compile Include="ListVisitor.cs" />
     <Compile Include="Program.cs" />
